@@ -26,12 +26,12 @@ static void	fill_background(t_game *game)
 	int	y;
 
 	y = 0;
-	while (y < WIN_H)
+	while (y < game->frame.height)
 	{
 		x = 0;
-		while (x < WIN_W)
+		while (x < game->frame.width)
 		{
-			if (y < WIN_H / 2)
+			if (y < game->frame.height / 2)
 				put_pixel(&game->frame, x, y, game->cfg.ceiling);
 			else
 				put_pixel(&game->frame, x, y, game->cfg.floor);
@@ -48,7 +48,7 @@ void	render(t_game *game)
 
 	fill_background(game);
 	x = 0;
-	while (x < WIN_W)
+	while (x < game->frame.width)
 	{
 		init_ray(game, &ray, x);
 		perform_dda(game, &ray);

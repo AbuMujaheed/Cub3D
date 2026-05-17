@@ -8,8 +8,8 @@
 # include <unistd.h>
 # include "libft.h"
 
-# define WIN_W 1024
-# define WIN_H 768
+# define DEFAULT_WIN_W 1024
+# define DEFAULT_WIN_H 768
 # define TEX_N 0
 # define TEX_S 1
 # define TEX_W 2
@@ -19,8 +19,11 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define KEY_UP 65362
+# define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+# define PLAYER_RADIUS 0.20
 
 typedef struct s_img
 {
@@ -99,6 +102,8 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	int			win_w;
+	int			win_h;
 	t_img		frame;
 	t_img		tex[4];
 	t_cfg		cfg;

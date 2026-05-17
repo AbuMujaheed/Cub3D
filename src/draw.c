@@ -37,7 +37,8 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 	choose_texture(ray);
 	tex = &game->tex[ray->tex];
 	step = 1.0 * tex->height / ray->line_h;
-	pos = (ray->draw_s - WIN_H / 2 + ray->line_h / 2) * step;
+	pos = (ray->draw_s - game->frame.height / 2
+			+ ray->line_h / 2) * step;
 	y = ray->draw_s;
 	while (y <= ray->draw_e)
 	{

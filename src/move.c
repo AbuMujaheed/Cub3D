@@ -2,15 +2,25 @@
 
 static int	clear_cell(t_game *game, double x, double y)
 {
+	if (x < 0 || y < 0 || x >= game->map.width || y >= game->map.height)
+		return (0);
 	return (game->map.grid[(int)y][(int)x] != '1'
 		&& game->map.grid[(int)y][(int)x] != ' ');
 }
 
+static int	clear_position(t_game *game, double x, double y)
+{
+	return (clear_cell(game, x - PLAYER_RADIUS, y - PLAYER_RADIUS)
+		&& clear_cell(game, x + PLAYER_RADIUS, y - PLAYER_RADIUS)
+		&& clear_cell(game, x - PLAYER_RADIUS, y + PLAYER_RADIUS)
+		&& clear_cell(game, x + PLAYER_RADIUS, y + PLAYER_RADIUS));
+}
+
 static void	try_move(t_game *game, double x, double y)
 {
-	if (clear_cell(game, x, game->player.y))
+	if (clear_position(game, x, game->player.y))
 		game->player.x = x;
-	if (clear_cell(game, game->player.x, y))
+	if (clear_position(game, game->player.x, y))
 		game->player.y = y;
 }
 

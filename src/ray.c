@@ -33,7 +33,7 @@ static void	init_steps(t_game *game, t_ray *ray)
 
 void	init_ray(t_game *game, t_ray *ray, int x)
 {
-	ray->cam = 2 * x / (double)WIN_W - 1;
+	ray->cam = 2 * x / (double)game->frame.width - 1;
 	ray->dir_x = game->player.dir_x + game->player.plane_x * ray->cam;
 	ray->dir_y = game->player.dir_y + game->player.plane_y * ray->cam;
 	ray->map_x = (int)game->player.x;
@@ -80,13 +80,13 @@ void	finish_ray(t_game *game, t_ray *ray)
 	else
 		ray->wall = (ray->map_y - game->player.y
 				+ (1 - ray->step_y) / 2) / ray->dir_y;
-	ray->line_h = (int)(WIN_H / ray->wall);
-	ray->draw_s = -ray->line_h / 2 + WIN_H / 2;
+	ray->line_h = (int)(game->frame.height / ray->wall);
+	ray->draw_s = -ray->line_h / 2 + game->frame.height / 2;
 	if (ray->draw_s < 0)
 		ray->draw_s = 0;
-	ray->draw_e = ray->line_h / 2 + WIN_H / 2;
-	if (ray->draw_e >= WIN_H)
-		ray->draw_e = WIN_H - 1;
+	ray->draw_e = ray->line_h / 2 + game->frame.height / 2;
+	if (ray->draw_e >= game->frame.height)
+		ray->draw_e = game->frame.height - 1;
 	if (ray->side == 0)
 		wall_x = game->player.y + ray->wall * ray->dir_y;
 	else

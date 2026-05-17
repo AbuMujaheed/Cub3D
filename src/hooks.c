@@ -11,11 +11,11 @@ int	key_press(int key, t_game *game)
 {
 	if (key == KEY_ESC)
 		close_game(game);
-	if (key == KEY_W)
+	if (key == KEY_W || key == KEY_UP)
 		game->keys.w = 1;
 	if (key == KEY_A)
 		game->keys.a = 1;
-	if (key == KEY_S)
+	if (key == KEY_S || key == KEY_DOWN)
 		game->keys.s = 1;
 	if (key == KEY_D)
 		game->keys.d = 1;
@@ -28,11 +28,11 @@ int	key_press(int key, t_game *game)
 
 int	key_release(int key, t_game *game)
 {
-	if (key == KEY_W)
+	if (key == KEY_W || key == KEY_UP)
 		game->keys.w = 0;
 	if (key == KEY_A)
 		game->keys.a = 0;
-	if (key == KEY_S)
+	if (key == KEY_S || key == KEY_DOWN)
 		game->keys.s = 0;
 	if (key == KEY_D)
 		game->keys.d = 0;
