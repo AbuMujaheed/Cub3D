@@ -86,6 +86,7 @@ typedef struct s_ray
 	double	delta_x;
 	double	delta_y;
 	double	wall;
+	double	wall_x;
 	int		map_x;
 	int		map_y;
 	int		step_x;
@@ -128,7 +129,7 @@ int		check_map(t_game *game);
 int		find_player(t_game *game);
 void	set_player_dir(t_player *p, char c);
 int		setup_mlx(t_game *game);
-void	load_textures(t_game *game);
+int		load_textures(t_game *game);
 int		close_game(t_game *game);
 int		key_press(int key, t_game *game);
 int		key_release(int key, t_game *game);
@@ -144,7 +145,6 @@ int		get_pixel(t_img *img, int x, int y);
 int		is_space(int c);
 int		is_blank(char *line);
 int		is_map_line(char *line);
-char	*trim_nl(char *line);
 int		max_int(int a, int b);
 int		arg_has_cub(char *path);
 

@@ -92,5 +92,5 @@ void	finish_ray(t_game *game, t_ray *ray)
 	else
 		wall_x = game->player.x + ray->wall * ray->dir_x;
 	wall_x -= floor(wall_x);
-	ray->tex_x = (int)(wall_x * game->tex[0].width);
+	ray->wall_x = wall_x;
 }

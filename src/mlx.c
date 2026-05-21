@@ -1,23 +1,27 @@
 #include "cub3d.h"
 
-static void	load_one(t_game *game, t_img *img, char *path)
+static int	load_one(t_game *game, t_img *img, char *path)
 {
 	img->img = mlx_xpm_file_to_image(game->mlx, path,
 			&img->width, &img->height);
 	if (!img->img)
-		game_error(game, "Texture load failed");
+		return (0);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp,
 			&img->line_len, &img->endian);
 	if (!img->addr)
-		game_error(game, "Texture data failed");
+		return (0);
+	return (1);
 }
 
-void	load_textures(t_game *game)
+int	load_textures(t_game *game)
 {
-	load_one(game, &game->tex[TEX_N], game->cfg.north);
-	load_one(game, &game->tex[TEX_S], game->cfg.south);
-	load_one(game, &game->tex[TEX_W], game->cfg.west);
-	load_one(game, &game->tex[TEX_E], game->cfg.east);
+	if (!load_one(game, &game->tex[TEX_N], game->cfg.north))
+		return (0);
+	if (!load_one(game, &game->tex[TEX_S], game->cfg.south))
+		return (0);
+	if (!load_one(game, &game->tex[TEX_W], game->cfg.west))
+		return (0);
+	return (load_one(game, &game->tex[TEX_E], game->cfg.east));
 }
 
 static void	set_window_size(t_game *game)
@@ -50,6 +54,7 @@ int	setup_mlx(t_game *game)
 		return (0);
 	game->frame.width = game->win_w;
 	game->frame.height = game->win_h;
-	load_textures(game);
+	if (!load_textures(game))
+		return (0);
 	return (1);
 }

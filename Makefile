@@ -3,7 +3,7 @@ NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -std=gnu17
 INC = -Iincludes -Ilibft -I$(MLX_DIR)
-MLX_DIR = mlx
+MLX_DIR = mlx/minilibx-linux
 MLX = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 LIBFT = libft/libft.a
 
