@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   config.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sojetimi <sojetimi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/04 12:29:09 by sojetimi          #+#    #+#             */
+/*   Updated: 2026/06/04 12:44:31 by sojetimi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static char	*skip_id(char *line)
@@ -49,7 +61,7 @@ int	set_texture(t_game *game, char *line)
 
 int	set_color(t_game *game, char *line)
 {
-	int	color;
+	int		color;
 	char	*value;
 
 	value = line + 1;

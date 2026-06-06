@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sojetimi <sojetimi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/04 12:42:22 by sojetimi          #+#    #+#             */
+/*   Updated: 2026/06/04 12:42:23 by sojetimi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	main(int argc, char **argv)
@@ -19,3 +31,4 @@ int	main(int argc, char **argv)
 	free_game(&game);
 	return (0);
 }
+// norminette libft, src, include
